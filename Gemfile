@@ -39,3 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'grape'
+gem 'swagger-docs'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
+gem 'grape-entity'
