@@ -8,6 +8,9 @@ module Employee
       end
       #curl http://localhost:3000/api/v1/employee_data.json
 
+
+
+
       desc "create a new employee data"
       ## This takes care of parameter validation
       params do 
@@ -25,6 +28,38 @@ module Employee
           })
       end
       #curl http://localhost:3000/api/v1/employee_data.json -d "name=jay;address=delhi;age=25"
+
+
+
+
+      ## delete an employee
+      params do 
+        requires :id, type: String
+      end
+
+      delete ':id' do 
+        EmpData.find(params[:id]).destroy!
+      end
+     # curl -X DELETE http://localhost:3000/api/v1/employee_data/5.json
+
+
+
+
+      ## update the employee records
+      params do 
+        requires :id, type:String
+        requires :name, type:String
+        requires :address, type:String
+        requires :age, type:Integer
+      end
+
+      put ':id' do 
+        EmpData.find(params[:id]).update!({
+          address: params[:address],
+          name: params[:name],
+          age: params[:age]
+          })
+      end
 
     end
   end
